@@ -1,6 +1,8 @@
 # Guacamole with docker compose
 This is a small documentation how to run a fully working **Apache Guacamole (incubating)** instance with docker (docker compose). The goal of this project is to make it easy to test Guacamole.
 
+This repo is a fork from boschkundendienst/guacamole-docker-compose:master, with some mofifications for ppc64le Linux Guacamole.
+
 ## About Guacamole
 Apache Guacamole (incubating) is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. It is called clientless because no plugins or client software are required. Thanks to HTML5, once Guacamole is installed on a server, all you need to access your desktops is a web browser.
 
@@ -13,7 +15,7 @@ You need a working **docker** installation and **docker compose** running on you
 Clone the GIT repository and start guacamole:
 
 ~~~bash
-git clone "https://github.com/boschkundendienst/guacamole-docker-compose.git"
+git clone "https://github.com/smanceau44/guacamole-docker-compose.git"
 cd guacamole-docker-compose
 ./prepare.sh
 docker compose up -d
@@ -46,7 +48,7 @@ services:
   # guacd
   guacd:
     container_name: guacd_compose
-    image: guacamole/guacd
+    image: smanceau44/guacd
     networks:
       guacnetwork_compose:
     restart: always
@@ -94,7 +96,7 @@ The following part of docker-compose.yml will create an instance of guacamole by
       POSTGRES_HOSTNAME: postgres
       POSTGRES_PASSWORD: ChooseYourOwnPasswordHere1234
       POSTGRES_USER: guacamole_user
-    image: guacamole/guacamole
+    image: smanceau44/guacamole
     links:
     - guacd
     networks:

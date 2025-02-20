@@ -115,6 +115,7 @@ services:
       POSTGRES_DB: guacamole_db
       POSTGRES_PASSWORD: 'ChooseYourOwnPasswordHere1234'
       POSTGRES_USER: guacamole_user
+      POSTGRES_HOST_AUTH_METHOD: trust
     image: postgres:15.2-alpine
     networks:
       - guacnetwork_compose
@@ -138,7 +139,6 @@ services:
       POSTGRES_PASSWORD: 'ChooseYourOwnPasswordHere1234'
       POSTGRES_USER: guacamole_user
       RECORDING_SEARCH_PATH: /record
-      POSTGRES_HOST_AUTH_METHOD: trust
     image: smanceau44/guacamole:1.5.5_20250220
     networks:
       - guacnetwork_compose
